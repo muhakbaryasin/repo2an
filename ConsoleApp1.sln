@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulatrixRepo.Library", "FormulatrixRepo.Library\FormulatrixRepo.Library.csproj", "{C5010636-4715-4104-9A0B-FDEA9B6E0B33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulatrixRepo.Library.Test", "FormulatrixRepo.Library.Test\FormulatrixRepo.Library.Test.csproj", "{A50D0C7A-E622-4005-BA4B-AB7BF2ACF2FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C5010636-4715-4104-9A0B-FDEA9B6E0B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5010636-4715-4104-9A0B-FDEA9B6E0B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5010636-4715-4104-9A0B-FDEA9B6E0B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A50D0C7A-E622-4005-BA4B-AB7BF2ACF2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50D0C7A-E622-4005-BA4B-AB7BF2ACF2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50D0C7A-E622-4005-BA4B-AB7BF2ACF2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50D0C7A-E622-4005-BA4B-AB7BF2ACF2FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
