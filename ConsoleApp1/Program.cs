@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text;
+using FormulatrixRepo.Library;
 
 namespace ConsoleApp1
 {
@@ -18,6 +18,7 @@ namespace ConsoleApp1
                 Console.WriteLine("item_name: string");
                 Console.WriteLine("input content/text");
                 Console.WriteLine("item_type 1 or 2 (1 for JSON, 2 for XML.");
+                return;
             }
 
             if ( (args[0].Equals("retrieve") || args[0].Equals("gettype") || args[0].Equals("deregister")) && argsLength != 2)
@@ -32,19 +33,19 @@ namespace ConsoleApp1
 
             if (args[0].Equals("retrieve") )
             {
-                Console.WriteLine( "Retrieve: {0} -> {1}", args[1], FormulatrixRepos<string>.Retrieve<string>(args[1]) );
+                Console.WriteLine( "Retrieve: {0} -> {1}", args[1], FormulatrixRepo<string>.Retrieve<string>(args[1]) );
             } else if (args[0].Equals("gettype"))
             {
-                Console.WriteLine("Gettype: {0} -> {1}", args[1], FormulatrixRepos<string>.GetType(args[1]) );
+                Console.WriteLine("Gettype: {0} -> {1}", args[1], FormulatrixRepo<string>.GetType(args[1]) );
             } else if (args[0].Equals("deregister"))
             {
-                FormulatrixRepos<string>.Deregister(args[1]);
+                FormulatrixRepo<string>.Deregister(args[1]);
                 Console.WriteLine("Deregister: {0} -> Done", args[1]);
             } else if (args[0].Equals("register"))
             {
                 int contentType = 0;
                 Int32.TryParse(args[3], out contentType);
-                FormulatrixRepos<string>.Register(args[1], args[2], contentType);
+                FormulatrixRepo<string>.Register(args[1], args[2], contentType);
                 Console.WriteLine("Register: {0} -> Done", args[1]);
             } else
             {

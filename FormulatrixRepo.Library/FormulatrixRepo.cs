@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace FormulatrixRepo.Library
 {
-  class FormulatrixRepos<T>
-  {
+    public class FormulatrixRepo<T>
+    {
     public static void Register( string itemName, T itemContent, int itemType )
     {
       if( itemType != 1 && itemType != 2 )
