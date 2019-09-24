@@ -17,8 +17,10 @@ namespace ConsoleApp1
         Console.WriteLine("item_name: string");
         Console.WriteLine("input content/text");
         Console.WriteLine("item_type 1 or 2 (1 for JSON, 2 for XML.");
-        return;
       }
+
+      if (argsLength == 0)
+        return;
 
       if ( (args[0].Equals("retrieve") || args[0].Equals("gettype") || args[0].Equals("deregister")) && argsLength != 2)
       {
