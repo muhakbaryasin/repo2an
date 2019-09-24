@@ -25,7 +25,7 @@ namespace ConsoleApp1
 
             if ( (args[0].Equals("retrieve") || args[0].Equals("gettype") || args[0].Equals("deregister")) && argsLength != 2)
             {
-                Console.WriteLine("Need 2 args to " + args[0]);
+                Console.WriteLine("Need 2 args to {0}", args[0]);
                 return;
             } else if (args[0].Equals("register") && argsLength != 4)
             {
@@ -35,20 +35,23 @@ namespace ConsoleApp1
 
             if (args[0].Equals("retrieve") )
             {
-                Console.WriteLine( "Retrieve: " + args[1] + " -> " + FormulatrixRepos<string>.Retrieve(args[1]) );
+                Console.WriteLine( "Retrieve: {0} -> {1}", args[1], FormulatrixRepos<string>.Retrieve(args[1]) );
             } else if (args[0].Equals("gettype"))
             {
-                Console.WriteLine("Gettype: " + args[1] + " -> " + FormulatrixRepos<string>.GetType(args[1]));
+                Console.WriteLine("Gettype: {0} -> {1}", args[1], FormulatrixRepos<string>.GetType(args[1]) );
             } else if (args[0].Equals("deregister"))
             {
                 FormulatrixRepos<string>.Deregister(args[1]);
-                Console.WriteLine("Deregister: " + args[1] + " -> Done" );
+                Console.WriteLine("Deregister: {0} -> Done", args[1]);
             } else if (args[0].Equals("register"))
             {
                 int contentType = 0;
                 Int32.TryParse(args[3], out contentType);
                 FormulatrixRepos<string>.Register(args[1], args[2], contentType);
-                Console.WriteLine("Register: " + args[1] + " -> Done");
+                Console.WriteLine("Register: {0} -> Done", args[1]);
+            } else
+            {
+                Console.WriteLine("Unknown method of {0}", args[1]);
             }
         }
     }
