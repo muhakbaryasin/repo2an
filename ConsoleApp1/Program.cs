@@ -35,7 +35,7 @@ namespace ConsoleApp1
 
             if (args[0].Equals("retrieve") )
             {
-                Console.WriteLine( "Retrieve: {0} -> {1}", args[1], FormulatrixRepos<string>.Retrieve(args[1]) );
+                Console.WriteLine( "Retrieve: {0} -> {1}", args[1], FormulatrixRepos<string>.Retrieve<string>(args[1]) );
             } else if (args[0].Equals("gettype"))
             {
                 Console.WriteLine("Gettype: {0} -> {1}", args[1], FormulatrixRepos<string>.GetType(args[1]) );
@@ -145,12 +145,12 @@ namespace ConsoleApp1
             RepoCommon.SaveToFile(itemName + fileExt, itemContent.ToString());
         } 
 
-        public static string Retrieve(string itemName)
+        public static T Retrieve<U>(string itemName)
         {
             if (!RepoCommon.FileNameIsValid( itemName ))
             {
                 Console.WriteLine("Invalid item name!");
-                return null;
+                return (T)Convert.ChangeType(null, typeof(T));
             }
 
             int itemType = GetType(itemName);
@@ -158,7 +158,7 @@ namespace ConsoleApp1
             if (itemType == 0)
             {
                 Console.WriteLine("Content doesn't exist!");
-                return null;
+                return (T)Convert.ChangeType(null, typeof(T));
             }
 
             string fileExt = itemType == 1 ? ".json" : ".xml";
@@ -167,7 +167,8 @@ namespace ConsoleApp1
             try
             {
                 // open file stream procedure
-                return System.IO.File.ReadAllText(@"" + fileName, Encoding.UTF8);
+                string isi = System.IO.File.ReadAllText(@"" + fileName, Encoding.UTF8);
+                return (T)Convert.ChangeType(isi, typeof(T));
             }
             catch (Exception)
             {
