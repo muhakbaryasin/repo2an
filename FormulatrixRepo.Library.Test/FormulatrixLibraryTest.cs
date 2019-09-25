@@ -106,10 +106,9 @@ namespace FormulatrixRepo.Library.Test
 
     // Try Register/Retrieve/Gettype-ing invalid item name must throw an exception message about the item name invalid
     [Test]
-    public void FormulatrixRepo_RegisterRetrieveGettype_Arbitrary_Invalid_Item_Name()
+    public void FormulatrixRepo_RegisterRetrieveGettype_Arbitrary_Invalid_Item_Name( [Values( "test8,test", "test8/test", ".test8test", "test8.test" )] string inputName )
     {
-      string inputName = "test8,test";
-      string inputContent = "<?xml version=\"1.0\" encoding=\"UTF - 8\"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend!</body></note>";
+      string inputContent = "<?xml version=\"1.0\" encoding=\"UTF - 8\"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend! - Test 8</body></note>";
       int contentType = 2;
 
       try
@@ -137,6 +136,29 @@ namespace FormulatrixRepo.Library.Test
       catch( System.Exception e )
       {
         StringAssert.Contains( "is invalid name", e.Message );
+      }
+    }
+
+    // Try rewrite registered item
+    [Test]
+    public void FormulatrixRepo_Register2x_Item()
+    {
+      string inputName = "test9";
+      string inputContent = "<?xml version=\"1.0\" encoding=\"UTF - 8\"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend! - Test 9</body></note>";
+      int contentType = 2;
+
+      try
+      {
+        FormulatrixRepo<string>.Register( inputName, inputContent, contentType );
+        FormulatrixRepo<string>.Register( inputName, inputContent, contentType );
+      }
+      catch( System.Exception e )
+      {
+        StringAssert.Contains( "already exists", e.Message );
+      }
+      finally
+      {
+        FormulatrixRepo<string>.Deregister( inputName );
       }
     }
   }
