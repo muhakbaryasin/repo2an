@@ -11,35 +11,18 @@ namespace FormulatrixRepo.Library
     public static void Register( string itemName, T itemContent, int itemType )
     {
       if( itemType != 1 && itemType != 2 )
-      {
-        Console.WriteLine( "Item type 1 for JSON and 2 for XML! You cant pick other." );
-        return;
-      }
+        throw new Exception( "Item type 1 for JSON and 2 for XML! You cant pick other." );
 
       if( !RepoCommon.FileNameIsValid( itemName ) )
-      {
-        Console.WriteLine( "Item name \"" + itemName + "\" is invalid name." );
-        return;
-      }
-
+        throw new Exception( "Item name \"" + itemName + "\" is invalid name." );
 
       if( GetType( itemName ) > 0 )
-      {
-        Console.WriteLine( "Item name already exists." );
-        return;
-      }
+        throw new Exception( "Item name already exists." );
 
       if( itemType == 1 && !RepoCommon.JsonIsValid( itemContent.ToString() ) )
-      {
-        Console.WriteLine( "JSON content is not valid!" );
-        return;
-      }
+        throw new Exception( "JSON content is not valid!" );
       else if( itemType == 2 && !RepoCommon.XmlIsValid( itemContent.ToString() ) )
-      {
-        Console.WriteLine( "XML content is not valid!" );
-        return;
-      }
-
+        throw new Exception( "XML content is not valid!" );
 
       string fileExt;
 
@@ -48,11 +31,8 @@ namespace FormulatrixRepo.Library
       else if( itemType == 2 )
         fileExt = ".xml";
       else
-      {
-        Console.WriteLine( "ItemType is only 1 or 2" );
-        return;
-      }
-
+        throw new Exception( "ItemType is only 1 or 2" );
+      
       RepoCommon.SaveToFile( itemName + fileExt, itemContent.ToString() );
     }
 
@@ -60,16 +40,16 @@ namespace FormulatrixRepo.Library
     {
       if( !RepoCommon.FileNameIsValid( itemName ) )
       {
-        Console.WriteLine( "Invalid item name!" );
-        return (T)Convert.ChangeType( null, typeof( T ) );
+        throw new Exception( "Invalid item name!" );
+        // return (T)Convert.ChangeType( null, typeof( T ) );
       }
 
       int itemType = GetType( itemName );
 
       if( itemType == 0 )
       {
-        Console.WriteLine( "Content doesn't exist!" );
-        return (T)Convert.ChangeType( null, typeof( T ) );
+        throw new Exception( "Content doesn't exist!" );
+        // return (T)Convert.ChangeType( null, typeof( T ) );
       }
 
       string fileExt = itemType == 1 ? ".json" : ".xml";
@@ -84,17 +64,18 @@ namespace FormulatrixRepo.Library
       catch( Exception )
       {
         // load file failed handling procedure.
+        // rethrow only :)
         throw;
       }
     }
 
     public static int GetType( string itemName )
     {
-      // return -1 if item name is invalid
       if( !RepoCommon.FileNameIsValid( itemName ) )
       {
-        Console.WriteLine( "Item name \"" + itemName + "\" is invalid name." );
-        return -1;
+        throw new Exception( "Item name \"" + itemName + "\" is invalid name." );
+        // return -1 if item name is invalid
+        // return -1;
       }
 
       string jsonItem = itemName + ".json", xmlItem = itemName + ".xml";
@@ -112,18 +93,12 @@ namespace FormulatrixRepo.Library
     public static void Deregister( string itemName )
     {
       if( !RepoCommon.FileNameIsValid( itemName ) )
-      {
-        Console.WriteLine( "Item name \"" + itemName + "\" is invalid name." );
-        return;
-      }
+        throw new Exception( "Item name \"" + itemName + "\" is invalid name." );
 
       int itemType = GetType( itemName );
 
       if( itemType == 0 )
-      {
-        Console.WriteLine( "Content doesn't exist." );
-        return;
-      }
+        throw new Exception( "Content doesn't exist." );
 
       string fileExt = itemType == 1 ? ".json" : ".xml";
       string fileName = itemName + fileExt;
@@ -136,6 +111,7 @@ namespace FormulatrixRepo.Library
       catch( Exception )
       {
         // deleting file failed handling procedure
+        // rethrow only :)
         throw;
       }
     }
