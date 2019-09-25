@@ -10,7 +10,7 @@ namespace FormulatrixRepo.Library
   {
     public static bool FileNameIsValid( string itemName )
     {
-      string fileNamePattern = @"^[\w\-. ]+$";
+      string fileNamePattern = @"^[\w\- ]+$";
       return System.Text.RegularExpressions.Regex.IsMatch( itemName, fileNamePattern );
     }
 

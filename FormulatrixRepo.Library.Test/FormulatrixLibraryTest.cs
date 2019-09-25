@@ -1,19 +1,25 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace FormulatrixRepo.Library.Test
 {
   [TestFixture]
   public class FormulatrixLibraryTest
   {
+    // Register must create a file with a corresponding type and content
     [Test]
-    public void FormulatrixRepo_Register_Then_Deregister()
+    public void FormulatrixRepo_Register_Then_Deregister([Values("test1", "test_1")] string inputName)
     {
-      string inputName = "test1";
       int inputContentType = 1;
+      
+      // will create test1.json file
       string inputContent = "{\"test1\" : \"test1\"}";
       FormulatrixRepo<string>.Register( inputName, inputContent, inputContentType );
+
+      // check file existance
+      Assert.IsTrue(System.IO.File.Exists(inputName + ".json"));
       
-      // deregister so that this test case can repeated due to existance of an item
+      // deregister so that this test case can be repeated due to existance of an item
       FormulatrixRepo<string>.Deregister( inputName );
     }
 
