@@ -40,7 +40,7 @@ namespace FormulatrixRepo.Library
     {
       if( !RepoCommon.FileNameIsValid( itemName ) )
       {
-        throw new Exception( "Invalid item name!" );
+        throw new Exception( "Item name \"" + itemName + "\" is invalid name." );
         // return (T)Convert.ChangeType( null, typeof( T ) );
       }
 
