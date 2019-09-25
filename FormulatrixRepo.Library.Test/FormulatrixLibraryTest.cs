@@ -139,5 +139,28 @@ namespace FormulatrixRepo.Library.Test
         StringAssert.Contains( "is invalid name", e.Message );
       }
     }
+
+    // Try rewrite registered item
+    [Test]
+    public void FormulatrixRepo_Register2x_Item()
+    {
+      string inputName = "test9";
+      string inputContent = "<?xml version=\"1.0\" encoding=\"UTF - 8\"?><note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don't forget me this weekend! - Test 9</body></note>";
+      int contentType = 2;
+
+      try
+      {
+        FormulatrixRepo<string>.Register( inputName, inputContent, contentType );
+        FormulatrixRepo<string>.Register( inputName, inputContent, contentType );
+      }
+      catch( System.Exception e )
+      {
+        StringAssert.Contains( "already exists", e.Message );
+      }
+      finally
+      {
+        FormulatrixRepo<string>.Deregister( inputName );
+      }
+    }
   }
 }
