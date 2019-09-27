@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FormulatrixRepo.Library")]
+[assembly: AssemblyTitle("FormulatrixRepoLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FormulatrixRepo.Library")]
+[assembly: AssemblyProduct("FormulatrixRepoLibrary")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c5010636-4715-4104-9a0b-fdea9b6e0b33")]
+[assembly: Guid("b87c063a-89ed-41ca-85ed-e1ebb88ed7f1")]
 
 // Version information for an assembly consists of the following four values:
 //
